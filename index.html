@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damar Services | Profesjonalne Biuro Rachunkowe w Holandii</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #0f172a;
+            --damar-red: #dc2626;
+            --damar-red-dark: #991b1b;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        h1, h2, h3, .font-serif { font-family: 'DM Serif Display', serif; }
+        
+        .section-divider {
+            position: relative;
+        }
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--damar-red);
+        }
+
+        .price-table tr:nth-child(even) { background-color: #f8fafc; }
+        .price-table tr:hover { background-color: #f1f5f9; }
+
+        .btn-navy {
+            background-color: var(--navy);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-navy:hover {
+            background-color: #1e293b;
+            transform: translateY(-1px);
+        }
+
+        .btn-red {
+            background-color: var(--damar-red);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0px 0px var(--damar-red-dark);
+        }
+        .btn-red:hover {
+            background-color: #ef4444;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 0px 0px var(--damar-red-dark);
+        }
+
+        .service-tab {
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+        .service-tab.active {
+            background-color: #f1f5f9;
+            border-left-color: var(--damar-red);
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .service-tab:not(.active):hover {
+            background-color: #f1f5f9;
+        }
+
+        .tab-content {
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Top Bar -->
+    <div class="bg-[#0f172a] text-white/90 py-2 text-xs font-medium border-b border-white/10 hidden md:block">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span class="flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-red-500"></i> Pon - Pt: 10:00 - 18:00</span>
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Holandia / Polska - Obsługa Online</span>
+            </div>
+            <div class="flex gap-4 font-sans">
+                <span>KVK: 67455921</span>
+                <span class="text-emerald-400 font-bold uppercase tracking-widest text-[10px]">Becon: Aktywny</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nawigacja -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-4 group">
+                <img src="./img/logo-1.png" alt="Logo Damar Services" class="h-12 w-auto transition-transform group-hover:scale-105" onerror="this.style.display='none'">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-serif leading-none text-slate-900">Damar Services</span>
+                    <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-red-600 font-sans">Accounting & Taxes</span>
+                </div>
+            </a>
+            
+            <div class="hidden lg:flex gap-10 items-center">
+                <div class="flex gap-8 text-sm font-bold text-slate-600 tracking-wide font-sans">
+                    <a href="#home" class="hover:text-red-600 transition-colors">START</a>
+                    <a href="#about" class="hover:text-red-600 transition-colors">O FIRMIE</a>
+                    <a href="#services" class="hover:text-red-600 transition-colors">USŁUGI</a>
+                    <a href="#prices" class="hover:text-red-600 transition-colors">CENNIK</a>
+                </div>
+                <a href="#contact" class="btn-red px-6 py-2.5 rounded text-sm font-bold transition-all font-sans uppercase">KONTAKT</a>
+            </div>
+            
+            <button class="lg:hidden text-slate-900"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative bg-white border-b border-slate-200 overflow-hidden">
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-slate-50 hidden lg:block" style="clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);"></div>
+        <div class="container mx-auto px-6 py-20 lg:py-32 relative z-10 text-center lg:text-left">
+            <div class="max-w-3xl">
+                <p class="text-red-600 font-bold tracking-[0.3em] text-[10px] uppercase mb-4 font-sans">Certyfikowany Doradca Podatkowy</p>
+                <h1 class="text-6xl md:text-8xl text-slate-950 mb-8 leading-[1.1]">
+                    Rzetelność, której <br> możesz <span class="italic text-red-600 underline decoration-slate-200">zaufać.</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                    Twoja księgowość w dobrych rękach. Profesjonalne biuro rachunkowe z numerem Becon – autoryzacją Belastingdienst.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start font-sans">
+                    <a href="#contact" class="btn-navy px-10 py-4 rounded font-bold hover:bg-slate-800 transition-all">Umów konsultację</a>
+                    <a href="#services" class="bg-white border border-slate-300 text-slate-900 px-10 py-4 rounded font-bold hover:bg-slate-50 transition-all">Szczegóły usług</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- O firmie - Pełne informacje -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl text-slate-900 mb-8 section-divider pb-10">O firmie</h2>
+                <p class="text-xl text-slate-700 leading-relaxed font-medium mb-12">
+                    <span class="text-red-600 font-bold uppercase">DAMAR SERVICES</span> jest rozwijającą się firmą, która zajmuje się kompleksową obsługą osób pracujących na terenie Holandii.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-serif text-slate-900 mb-6 flex items-center gap-3">
+                        <i data-lucide="clipboard-list" class="text-red-600"></i> Zakres naszych usług
+                    </h3>
+                    <p class="text-slate-600 font-sans">Usługi, które wykonujemy dla naszych klientów to:</p>
+                    <ul class="space-y-4 text-slate-600 font-sans">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Rozliczenie podatkowe w Holandii <strong>bez zamawiania hasła i loginu</strong>, aktualny program już od stycznia.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Rozliczenia/korekty podatkowe w polskim Urzędzie Skarbowym.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Pomoc przy uzyskaniu certyfikatu rezydencji na terenie Holandii.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Pomoc w zawarciu różnego rodzaju ubezpieczeń.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Pomoc w uzyskaniu świadczeń socjalnych – dodatki z Belastingdienst (dodatek do ubezpieczenia, rodzinnego, mieszkania i przedszkola). Załatwiamy przez internet <strong>bez zbędnych druków</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                            <span>Tłumaczenia zwykłe pism z Belastingdienst oraz odwołania.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-inner">
+                        <h3 class="text-2xl font-serif text-slate-900 mb-6">Nasza misja</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 font-sans">
+                            Oferujemy rzetelną, indywidualną oraz w pełni profesjonalną obsługę naszych klientów.
+                        </p>
+                        <div class="border-l-4 border-red-600 pl-6 py-2">
+                            <p class="text-xl text-navy font-bold font-sans leading-tight">
+                                Pomagamy do samego końca, nigdy nie zostawiamy Naszego Klienta z niezałatwioną sprawą!!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6 p-8 bg-white border border-slate-200 rounded-3xl shadow-sm">
+                        <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 uppercase tracking-widest text-xs mb-1 font-sans">Becon Nummer</h4>
+                            <p class="text-slate-600 text-sm font-sans">
+                                Biuro posiada numer doradcy podatkowego w Holandii, co gwarantuje autoryzowany kontakt z urzędem.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USŁUGI - PEŁNE DANE Z services.html -->
+    <section id="services" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-red-600 font-bold tracking-[0.2em] text-[10px] uppercase mb-2 font-sans">Procedury i dokumentacja</p>
+                <h2 class="text-4xl md:text-5xl text-slate-900 mb-4 font-serif">Usługi Szczegółowo</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row border border-slate-200 min-h-[700px]">
+                
+                <!-- Lista Usług (Sidebar) -->
+                <div class="lg:w-1/3 bg-slate-50 border-r border-slate-200">
+                    <div class="flex flex-col text-sm font-bold text-slate-600 font-sans">
+                        <button onclick="openTab(event, 'tab1')" class="tab-btn service-tab active p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Rozliczenia podatkowe Holandia</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab2')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Rozliczenia / Korekty Polska</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab3')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>PIT-ZAP 3 / Rezydencja</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab4')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Zorgtoeslag (Ubezpieczenie)</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab5')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Huurtoeslag (Czynsz)</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab6')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Kinderbijslag (Rodzinne)</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab7')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Kinderopvangtoeslag (Żłobek)</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab8')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Sofi numer (BSN) dla partnera</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab9')" class="tab-btn service-tab p-5 text-left border-b border-slate-100 flex items-center justify-between group">
+                            <span>Ubezpieczenia</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                        <button onclick="openTab(event, 'tab10')" class="tab-btn service-tab p-5 text-left flex items-center justify-between group">
+                            <span>Kindgebonden budget</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-red-600"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Treść szczegółowa -->
+                <div class="lg:w-2/3 p-10 lg:p-16 overflow-y-auto max-h-[700px]">
+                    
+                    <!-- Tab 1: Holandia -->
+                    <div id="tab1" class="tab-content active">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Rozliczenia podatkowe w Holandii</h3>
+                        <p class="text-slate-600 mb-6 font-sans leading-relaxed">
+                            Rozliczenia do 5 lat wstecz – wysokość zwrotu zależy od tego, jak długo pracowałeś/aś w Holandii oraz ile podatku odprowadził Twój pracodawca.
+                        </p>
+                        <h4 class="font-bold text-red-600 mb-4 uppercase text-xs tracking-widest font-sans">Wymagane dokumenty:</h4>
+                        <ul class="space-y-3 text-sm text-slate-700 mb-10 font-sans">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-0.5 shrink-0"></i> Wszystkie Jaaropgaaf–y za dany rok</li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-0.5 shrink-0"></i> Numer konta bankowego (każdy musi mieć własne konto)</li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-0.5 shrink-0"></i> Dokładne informacje: imiona, daty urodzenia małżonka/i i dzieci</li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-0.5 shrink-0"></i> Adres zameldowania w danym roku podatkowym</li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-0.5 shrink-0"></i> Informacja o pracy w Polsce lub innym kraju</li>
+                        </ul>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-slate-50 p-6 rounded-2xl">
+                                <h5 class="font-bold text-slate-900 mb-2">„Rozłąkowe”</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">Rozliczenie z małżonką/iem, który również musi posiadać numer BSN (Sofi) oraz wykazać dochody netto.</p>
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-2xl">
+                                <h5 class="font-bold text-slate-900 mb-2">Formularz M / Hipoteka</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">Dla osób meldujących/wymeldowujących się lub posiadających kredyt hipoteczny (dom w NL/PL).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Polska -->
+                    <div id="tab2" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Rozliczenia / Korekty w Polsce</h3>
+                        <p class="text-slate-600 mb-6 font-sans">Kompleksowa pomoc w deklaracjach PIT-36 + ZG dla osób uzyskujących dochody za granicą.</p>
+                        <h4 class="font-bold text-red-600 mb-4 uppercase text-xs tracking-widest font-sans">Niezbędne dane:</h4>
+                        <ul class="space-y-4 text-sm text-slate-700 font-sans">
+                            <li class="flex gap-4 p-4 border border-slate-100 rounded-xl">
+                                <span class="w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs shrink-0 font-bold">1</span>
+                                <span>Wszystkie Jaaropgaaf–y za dany rok podatkowy</span>
+                            </li>
+                            <li class="flex gap-4 p-4 border border-slate-100 rounded-xl">
+                                <span class="w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs shrink-0 font-bold">2</span>
+                                <span>Wszystkie PIT-11 od pracodawców z Polski</span>
+                            </li>
+                            <li class="flex gap-4 p-4 border border-slate-100 rounded-xl">
+                                <span class="w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs shrink-0 font-bold">3</span>
+                                <span>Adres zameldowania w Polsce oraz PIT za rok poprzedni</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab 3: PIT-ZAP 3 -->
+                    <div id="tab3" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">PIT-ZAP 3 / Rezydencja</h3>
+                        <p class="text-slate-600 mb-8 font-sans">Pomoc w uzyskaniu certyfikatu rezydencji na terenie Holandii oraz aktualizacja danych w polskim urzędzie.</p>
+                        <div class="bg-slate-50 text-slate-900 p-8 rounded-2xl border border-slate-100 font-sans">
+                            <h4 class="font-bold text-red-600 mb-6 uppercase text-xs tracking-widest">Informacje do PIT-ZAP 3:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-medium">
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Imię i Nazwisko</div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Numer PESEL</div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Data Urodzenia</div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Adres w Holandii</div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Adres Mailowy</div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200">• Data zameldowania</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Zorgtoeslag -->
+                    <div id="tab4" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Zorgtoeslag (Ubezpieczenie)</h3>
+                        <p class="text-slate-600 mb-8 font-sans italic">
+                            Warunkiem uzyskania tego dodatku jest konieczność opłacania ubezpieczenia zdrowotnego w Holandii. Korzystanie z opieki medycznej nie wpływa na zwrot.
+                        </p>
+                        <h4 class="font-bold text-red-600 mb-4 uppercase text-xs tracking-widest font-sans">Dane do wniosku:</h4>
+                        <div class="bg-slate-900 text-white p-8 rounded-3xl">
+                            <ul class="space-y-3 text-sm text-slate-300 font-sans">
+                                <li>• Imię, nazwisko i data urodzenia</li>
+                                <li>• Numer BSN (Sofi)</li>
+                                <li>• Dochody brutto za dany rok (PL i NL)</li>
+                                <li>• Dokładna data startu ubezpieczenia</li>
+                                <li>• Stan cywilny (i dane partnera, jeśli dotyczy)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 5: Huurtoeslag -->
+                    <div id="tab5" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Huurtoeslag (Czynsz)</h3>
+                        <div class="space-y-6">
+                            <h4 class="font-bold text-slate-900 font-sans">Komu należy się dofinansowanie?</h4>
+                            <ul class="space-y-4 text-slate-600 font-sans text-sm">
+                                <li class="flex items-center gap-3"><i data-lucide="info" class="w-5 h-5 text-red-600"></i> Osoby powyżej 18 roku życia</li>
+                                <li class="flex items-center gap-3"><i data-lucide="info" class="w-5 h-5 text-red-600"></i> Kryteria dochodowe oraz kwota czynszu (zmienne co rok)</li>
+                            </ul>
+                            <div class="bg-red-50 p-8 rounded-2xl border border-red-100 text-center">
+                                <p class="text-red-900 font-bold mb-2">Skontaktuj się z nami mailowo!</p>
+                                <p class="text-red-700 text-sm italic">Wszystko sprawdzimy i napiszemy, czy dofinansowanie należy się Tobie.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 6: Kinderbijslag -->
+                    <div id="tab6" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Zasiłek rodzinny (Kinderbijslag)</h3>
+                        <h4 class="font-bold text-red-600 mb-6 uppercase text-xs tracking-widest font-sans">Dokumenty do wniosku:</h4>
+                        <div class="grid sm:grid-cols-2 gap-4 text-xs font-sans mb-8">
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• Kopie dowodów rodziców i dzieci</li>
+                                <li>• Numery PESEL dzieci</li>
+                                <li>• Akty urodzenia dzieci</li>
+                            </ul>
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• Akt małżeństwa (nie jest wymagany)</li>
+                                <li>• Zaświadczenie z MOPS z Polski</li>
+                                <li>• Kontrakt od pracodawcy</li>
+                            </ul>
+                        </div>
+                        <div class="p-6 bg-slate-900 text-white rounded-2xl italic text-sm">
+                            Pamiętaj: warto robić przelewy i nie przekazywać pieniędzy osobiście. Kwota na dziecko powinna przekraczać 410 euro na kwartał.
+                        </div>
+                    </div>
+
+                    <!-- Tab 7: Kinderopvang -->
+                    <div id="tab7" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Kinderopvangtoeslag (Żłobek)</h3>
+                        <div class="space-y-8">
+                            <p class="text-slate-600 font-sans">Dofinansowanie uzależnione jest od dochodów rodziców pracujących na terenie Holandii.</p>
+                            <div class="flex items-center gap-6 p-8 bg-slate-50 rounded-2xl border-l-8 border-red-600">
+                                <i data-lucide="file-warning" class="w-10 h-10 text-red-600 shrink-0"></i>
+                                <p class="font-bold text-slate-900 uppercase text-xs tracking-widest">Niezbędny jest kontrakt z kinderopvang (placówką).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 8: BSN Partnera -->
+                    <div id="tab8" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Numer BSN dla partnera</h3>
+                        <p class="text-slate-600 mb-8 font-sans">Pomoc w wyrobieniu numeru BSN dla członka rodziny w celu wspólnego rozliczenia podatkowego.</p>
+                        <h4 class="font-bold text-red-600 mb-6 uppercase text-xs tracking-widest font-sans">Co przygotować:</h4>
+                        <ul class="space-y-4 text-sm font-sans">
+                            <li class="flex gap-4 items-center"><i data-lucide="camera" class="w-5 h-5 text-slate-400"></i> Wyraźna, kolorowa kopia dowodu partnera/ki</li>
+                            <li class="flex gap-4 items-center"><i data-lucide="file-check" class="w-5 h-5 text-slate-400"></i> Akt małżeństwa na druku europejskim</li>
+                            <li class="flex gap-4 items-center"><i data-lucide="home" class="w-5 h-5 text-slate-400"></i> Dokument o wspólnym zameldowaniu (tłumaczony)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab 9: Ubezpieczenia -->
+                    <div id="tab9" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Ubezpieczenia w Holandii</h3>
+                        <div class="grid md:grid-cols-2 gap-8 font-sans">
+                            <div class="space-y-4">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                                    <i data-lucide="heart"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900">Ubezpieczenie zdrowotne</h4>
+                                <p class="text-sm text-slate-500 italic leading-relaxed">
+                                    Aby ubezpieczyć się samodzielnie, wymagany jest adres zamieszkania w NL i umowa o pracę.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="w-12 h-12 bg-slate-900 text-white rounded-lg flex items-center justify-center">
+                                    <i data-lucide="car"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900">Ubezpieczenie samochodu</h4>
+                                <p class="text-sm text-slate-500 italic leading-relaxed">
+                                    Pełna pomoc w wyborze i zawarciu polisy dla Twojego pojazdu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 10: Kindgebonden budget -->
+                    <div id="tab10" class="tab-content">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 border-b pb-4">Kindgebonden budget</h3>
+                        <p class="text-slate-600 mb-8 font-sans">Dodatek przysługujący na dzieci poniżej 18 roku życia.</p>
+                        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                            <ul class="space-y-4 text-sm text-slate-700 font-sans">
+                                <li class="flex items-center gap-3"><i data-lucide="alert-circle" class="text-red-600 w-5 h-5 mt-0.5 shrink-0"></i> Musisz posiadać przyznane Kinderbijslag (rodzinne).</li>
+                                <li class="flex items-center gap-3 font-bold text-slate-900 italic">Wysokość dodatku zależy bezpośrednio od dochodów rodziców.</li>
+                            </ul>
+                        </div>
+                        <p class="mt-8 text-sm text-slate-500 text-center font-sans">Napisz do nas – sprawdzimy, czy ten dodatek Ci przysługuje!</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section id="prices" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl text-slate-900 mb-4 font-serif">Transparentny Cennik</h2>
+            <p class="text-slate-500 font-medium font-sans italic">Pełna lista usług i opłat biura.</p>
+            <div class="max-w-4xl mx-auto border border-slate-200 rounded-lg overflow-hidden shadow-sm mt-10">
+                <table class="w-full text-left price-table font-sans">
+                    <thead class="bg-slate-900 text-white">
+                        <tr>
+                            <th class="px-8 py-5 font-bold uppercase text-[10px] tracking-widest">Usługa</th>
+                            <th class="px-8 py-5 font-bold uppercase text-[10px] tracking-widest text-right">Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody id="prices-body" class="text-slate-700 text-sm"></tbody>
+                </table>
+            </div>
+            <p class="mt-8 text-xs text-slate-400 font-sans italic">* Tłumaczenia dokumentów i odwołania wyceniamy indywidualnie (od 30 euro).</p>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact" class="py-24 bg-slate-50 overflow-hidden relative">
+        <div class="container mx-auto px-6 relative z-10 font-sans">
+            <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-200">
+                
+                <!-- Lewa strona -->
+                <div class="lg:w-2/5 bg-slate-50 p-12 lg:p-16 flex flex-col justify-between border-r border-slate-200">
+                    <div>
+                        <span class="text-red-600 font-bold tracking-[0.2em] text-[10px] uppercase mb-4 block">Biuro Rachunkowe</span>
+                        <h2 class="text-4xl md:text-5xl font-serif mb-8 text-slate-900">Kontakt</h2>
+                        <p class="text-slate-600 mb-12 text-lg leading-relaxed">
+                            Monika Zgłobień – Twój osobisty doradca podatkowy. Jesteśmy tu, by pomóc Ci odzyskać każde euro.
+                        </p>
+                        
+                        <div class="space-y-10">
+                            <a href="tel:+31637430136" class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <i data-lucide="phone" class="text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Infolinia</span>
+                                    <span class="text-xl font-bold text-slate-900">+31 (0) 6 374 30 136</span>
+                                </div>
+                            </a>
+                            <a href="mailto:damarservices.nl@gmail.com" class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center border border-slate-200 group-hover:border-red-600 transition-all">
+                                    <i data-lucide="mail" class="text-red-600"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">E-mail Biurowy</span>
+                                    <span class="text-lg font-bold text-slate-900 italic lowercase">damarservices.nl@gmail.com</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-16 pt-12 border-t border-slate-200 flex items-center gap-4">
+                        <a href="https://www.facebook.com/Damar-Services-100133668719293/" target="_blank" class="w-12 h-12 bg-white border border-slate-200 rounded-full flex items-center justify-center hover:text-red-600 transition-colors">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <span class="text-[10px] font-bold text-slate-500 tracking-[0.2em] uppercase">KVK: 67455921</span>
+                    </div>
+                </div>
+                
+                <!-- Prawa strona -->
+                <div class="lg:w-3/5 p-12 lg:p-16 flex flex-col gap-16 bg-white text-slate-900">
+                    <div>
+                        <div class="flex items-center gap-4 mb-10">
+                            <div class="w-10 h-1 bg-red-600"></div>
+                            <h3 class="text-2xl font-serif text-slate-900">Godziny pracy</h3>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Poniedziałek - Piątek</p>
+                                <p class="text-xl font-bold">10:00 — 18:00</p>
+                            </div>
+                            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Sobota</p>
+                                <p class="text-xl font-bold">11:00 — 15:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-[2rem] p-10 relative overflow-hidden border border-slate-200 shadow-sm font-sans">
+                        <div class="absolute top-0 right-0 p-8 opacity-5">
+                            <i data-lucide="landmark" class="w-32 h-32 text-slate-900"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif mb-8 text-slate-900 relative z-10">Płatności</h3>
+                        <div class="grid sm:grid-cols-2 gap-10 relative z-10">
+                            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Bank ING (NL)</p><p class="text-lg font-bold">Monika Zgłobień</p></div>
+                            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Kod SWIFT / BIC</p><p class="text-lg font-mono font-bold text-red-600 tracking-wider uppercase">INGBNL2A</p></div>
+                            <div class="sm:col-span-2">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 text-center sm:text-left">Numer Konta (IBAN)</p>
+                                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100 font-mono text-lg font-bold tracking-widest break-all text-center">NL57 INGB 0007 5521 90</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 text-center border-t border-slate-200">
+        <p class="text-slate-400 text-xs font-bold tracking-[0.4em] uppercase font-sans">&copy; 2026 Damar Services | Professional Accounting Solutions</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        const priceData = {
+            prices: [
+                { name: "Rozliczenie podatku dla niezameldowanych w Holandii", price: "50 euro" },
+                { name: "Rozłąkowe / rozliczenie z partnerem (niezameldowani)", price: "80 euro" },
+                { name: "Rozliczenie na M formularzu", price: "60 euro" },
+                { name: "Rozliczenie podatku dla zameldowanych w Holandii", price: "40 euro" },
+                { name: "Rozliczenie z partnerem dla zameldowanych w Holandii", price: "70 euro" },
+                { name: "Rozliczenia / korekty w polskim US", price: "40 euro" },
+                { name: "Pomoc przy ZAP-3", price: "30 euro" },
+                { name: "Uzyskanie certyfikatu rezydencji w Holandii", price: "30 euro" },
+                { name: "Pomoc w uzyskaniu UE/WE z polskiego US", price: "50 euro" },
+                { name: "Dofinansowanie do ubezpieczenia / zorgtoeslag", price: "40 euro" },
+                { name: "Dofinansowanie do czynszu / huurtoeslag", price: "40 euro" },
+                { name: "Zasiłek rodzinny / kinderbijslag", price: "100 euro" },
+                { name: "Kieszonkowe / kindgebonden budget", price: "40 euro" },
+                { name: "Dofinansowanie do żłobka / kinderopvangtoeslag", price: "40 euro" },
+                { name: "Sofi numer dla partnera fiskalnego", price: "40 euro" },
+                { name: "Tłumaczenia dokumentów / odwołania", price: "od 30 euro" },
+                { name: "Podatek drogowy (polskie tablice)", price: "40 euro" },
+                { name: "Ubezpieczenia", price: "40 euro" }
+            ]
+        };
+
+        function renderPrices() {
+            const body = document.getElementById('prices-body');
+            body.innerHTML = priceData.prices.map(item => `
+                <tr class="transition-colors border-b border-slate-100 last:border-0 group">
+                    <td class="px-10 py-6 text-sm font-medium text-slate-700 group-hover:text-slate-950 transition-colors">${item.name}</td>
+                    <td class="px-10 py-6 text-right font-black text-slate-900">${item.price}</td>
+                </tr>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderPrices);
+    </script>
+</body>
+</html>
